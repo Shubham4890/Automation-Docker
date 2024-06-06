@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: Tspl@2023#
+      MYSQL_DATABASE: test
+      MYSQL_USER: tspluser
+      MYSQL_PASSWORD: Tspl@2023#
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  app:
+    build: .
+    ports:
+      - "8017:8017"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://3.7.156.148:3306/test
+      SPRING_DATASOURCE_USERNAME: tspluser
+      SPRING_DATASOURCE_PASSWORD: Tspl@2023#
+    depends_on:
+      - db
+
+volumes:
+  db_data:
