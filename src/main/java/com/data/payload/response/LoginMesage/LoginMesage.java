@@ -18,5 +18,6 @@ public class LoginMesage {
     public LoginMesage(String message, Boolean status) {
         this.message = message;
         this.status = status;
+        
     }
 }
